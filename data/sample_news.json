@@ -1,0 +1,122 @@
+[
+  {
+    "id": "art-001",
+    "title": "Global climate summit reaches provisional deal",
+    "description": "Leaders agree on a pathway to reduce emissions.",
+    "content": "Delegates at the global climate summit in Geneva agreed on a provisional framework aimed at accelerating carbon reductions over the next decade.",
+    "url": "https://news.example.com/climate-summit",
+    "source": "BBC",
+    "language": "en",
+    "published_at": "2024-03-01T08:00:00Z"
+  },
+  {
+    "id": "art-002",
+    "title": "New electric buses roll out in Madrid",
+    "description": "La capital española introduce una nueva flota ecológica.",
+    "content": "Madrid ha puesto en marcha 50 autobuses eléctricos para reducir la contaminación y mejorar el transporte público.",
+    "url": "https://news.example.com/madrid-buses",
+    "source": "El País",
+    "language": "es",
+    "published_at": "2024-03-01T09:30:00Z"
+  },
+  {
+    "id": "art-003",
+    "title": "Berlin launches urban garden initiative",
+    "description": "Stadtgärten sollen Lebensqualität steigern.",
+    "content": "Die Stadt Berlin unterstützt neue urbane Gartenprojekte, um lokale Lebensmittelproduktion und grüne Räume zu fördern.",
+    "url": "https://news.example.com/berlin-gardens",
+    "source": "Der Spiegel",
+    "language": "de",
+    "published_at": "2024-03-01T07:45:00Z"
+  },
+  {
+    "id": "art-004",
+    "title": "Tech firms collaborate on open-source AI tools",
+    "description": "A consortium backs accessible AI development.",
+    "content": "Several mid-sized technology companies announced a partnership to release open-source AI toolkits designed for education and small businesses.",
+    "url": "https://news.example.com/open-source-ai",
+    "source": "Reuters",
+    "language": "en",
+    "published_at": "2024-03-01T11:15:00Z"
+  },
+  {
+    "id": "art-005",
+    "title": "Researchers discover resilient coral species",
+    "description": "A breakthrough in coral reef conservation.",
+    "content": "Marine biologists identified a coral species that showed unexpected resilience to warming ocean temperatures in the Pacific.",
+    "url": "https://news.example.com/resilient-coral",
+    "source": "Science Daily",
+    "language": "en",
+    "published_at": "2024-03-01T06:20:00Z"
+  },
+  {
+    "id": "art-006",
+    "title": "Nouvelles mesures pour améliorer les transports lyonnais",
+    "description": "Lyon investit dans des tramways modernes.",
+    "content": "La métropole de Lyon annonce un plan d'investissement de 200 millions d'euros pour moderniser son réseau de tramways d'ici 2026.",
+    "url": "https://news.example.com/lyon-transports",
+    "source": "Le Monde",
+    "language": "fr",
+    "published_at": "2024-03-01T10:05:00Z"
+  },
+  {
+    "id": "art-007",
+    "title": "Tokyo startups pivot to green energy",
+    "description": "Small firms target hydrogen and solar projects.",
+    "content": "Dozens of Tokyo-based startups are shifting their focus to renewable energy, partnering with municipalities to deploy hydrogen fuel cells and rooftop solar systems.",
+    "url": "https://news.example.com/tokyo-green-startups",
+    "source": "NHK",
+    "language": "ja",
+    "published_at": "2024-03-01T05:40:00Z"
+  },
+  {
+    "id": "art-008",
+    "title": "Российские школы внедряют уроки экологии",
+    "description": "Новая программа по сохранению природы.",
+    "content": "В нескольких российских регионах стартовала образовательная программа по экологии, направленная на сокращение отходов и защиту лесов.",
+    "url": "https://news.example.com/russia-ecology-schools",
+    "source": "TASS",
+    "language": "ru",
+    "published_at": "2024-03-01T12:10:00Z"
+  },
+  {
+    "id": "art-009",
+    "title": "São Paulo expande programa de bicicletas públicas",
+    "description": "Mais estações chegam aos bairros periféricos.",
+    "content": "A prefeitura de São Paulo anunciou a expansão do programa de bicicletas compartilhadas para 15 novos bairros com baixa oferta de transporte.",
+    "url": "https://news.example.com/saopaulo-bikes",
+    "source": "Folha de S.Paulo",
+    "language": "pt",
+    "published_at": "2024-03-01T13:25:00Z"
+  },
+  {
+    "id": "art-010",
+    "title": "Climate summit secures new adaptation fund",
+    "description": "Support pledged for coastal communities.",
+    "content": "An adaptation fund worth $2 billion will back sea wall construction and mangrove restoration in Southeast Asia.",
+    "url": "https://news.example.com/climate-fund",
+    "source": "AP",
+    "language": "en",
+    "published_at": "2024-03-01T08:30:00Z"
+  },
+  {
+    "id": "art-011",
+    "title": "Innovadores colombianos desarrollan redes de sensores",
+    "description": "Tecnología para monitorear la calidad del aire.",
+    "content": "Un grupo de ingenieros en Bogotá desplegó sensores de bajo costo que monitorean contaminación en tiempo real para alertar a los ciudadanos.",
+    "url": "https://news.example.com/colombia-sensors",
+    "source": "El Tiempo",
+    "language": "es",
+    "published_at": "2024-03-01T09:50:00Z"
+  },
+  {
+    "id": "art-012",
+    "title": "新しい洋上風力発電プロジェクトが北海道で始動",
+    "description": "地域経済と持続可能な電力を後押し。",
+    "content": "北海道の沿岸で洋上風力発電プロジェクトが開始され、地元企業が建設と保守に参加する予定だ。",
+    "url": "https://news.example.com/hokkaido-offshore-wind",
+    "source": "Asahi Shimbun",
+    "language": "ja",
+    "published_at": "2024-03-01T04:55:00Z"
+  }
+]

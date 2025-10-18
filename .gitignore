@@ -1,0 +1,37 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# C extensions
+*.so
+
+# Distribution / packaging
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# VSCode and IDE
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Artifacts and outputs
+artifacts/
+news_digest_output.json
+plots/*.png
+.llm_cache/

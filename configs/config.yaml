@@ -1,0 +1,35 @@
+paths:
+  input: "data/sample_news.json"
+  output: "news_digest_output.json"
+  plot_dir: "plots"
+  vectors: "artifacts/article_vectors.npy"
+  history_dir: "artifacts/digests"
+  run_log: "artifacts/run_history.json"
+
+model:
+  name: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  batch_size: 64
+  normalize: true
+
+cluster:
+  eps: 0.7
+  min_samples: 3
+
+keywords:
+  per_topic: 8
+
+enrichment:
+  enable_entities: true
+  spacy_model: "xx_ent_wiki_sm"
+
+search:
+  use_ann: false
+  ann_index: "artifacts/ann_index.bin"
+  ann_m: 16
+  ann_ef_construction: 200
+  ann_ef_search: 100
+
+summary:
+  backend: "stub"
+  llm_model: null
+  max_topics: null
