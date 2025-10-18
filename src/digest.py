@@ -6,7 +6,7 @@ import logging
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Callable, Dict, Iterable, List, Tuple
-
+from typing import Sequence
 import numpy as np
 
 from . import cluster, embeddings, entities, preprocess, quality, search, utils
@@ -237,10 +237,12 @@ def run_pipeline(config_path: str) -> Dict:
     return digest_data
 
 
-def parse_args(args: Iterable[str] | None = None) -> argparse.Namespace:
+
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate the multilingual news digest")
     parser.add_argument("--config", default="configs/config.yaml", help="Path to the YAML configuration file")
     return parser.parse_args(args=args)
+
 
 
 def main() -> None:
