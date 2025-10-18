@@ -94,7 +94,11 @@ class LLMSummarizer(Summarizer):
             temperature=0.3,
             max_tokens=400,
         )
-        return response.choices[0].message.content.strip()
+        choice = response.choices[0]
+        content = getattr(choice.message, "content", None)
+        if content is None:
+            raise RuntimeError("LLM response did not include content.")
+        return content.strip()
 
 
 def build_markdown(

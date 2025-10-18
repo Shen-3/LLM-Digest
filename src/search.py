@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 from functools import lru_cache
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING
 
 import numpy as np
 
@@ -16,6 +16,11 @@ try:  # optional dependency
     import hnswlib
 except ImportError:  # pragma: no cover - optional
     hnswlib = None  # type: ignore
+
+if TYPE_CHECKING:  # pragma: no cover - hints only
+    from hnswlib import Index as HnswIndex
+else:
+    HnswIndex = Any
 
 
 _META_SUFFIX = ".meta.json"
@@ -61,7 +66,7 @@ def ann_index_exists(index_path: str | Path) -> bool:
 
 
 @lru_cache(maxsize=1)
-def _load_ann_index(index_path: str, ef_search: int) -> Tuple["hnswlib.Index", Dict[str, int]]:
+def _load_ann_index(index_path: str, ef_search: int) -> Tuple[HnswIndex, Dict[str, int]]:
     if hnswlib is None:
         raise RuntimeError("hnswlib is not available")
     path = Path(index_path)

@@ -2,12 +2,12 @@
 from __future__ import annotations
 
 import argparse
-from typing import Iterable
+from typing import Sequence
 
 from . import summarizers, utils
 
 
-def parse_args(args: Iterable[str] | None = None) -> argparse.Namespace:
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create a Markdown digest summary")
     parser.add_argument("--config", default="configs/config.yaml", help="Path to config file")
     parser.add_argument("--language", default="English", help="Output language label")

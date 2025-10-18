@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter, defaultdict
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, Sequence, List
 
 import numpy as np
 
@@ -118,7 +118,7 @@ def save_bar_chart(digest_path: str, out_path: str) -> None:
     plt.close()
 
 
-def parse_args(args: Iterable[str] | None = None) -> argparse.Namespace:
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Compute KPIs for the news digest")
     parser.add_argument("--config", default="configs/config.yaml", help="Path to config file")
     return parser.parse_args(args=args)

@@ -1,9 +1,12 @@
 """Lightweight entity extraction helpers using spaCy when available."""
 from __future__ import annotations
-
+from typing import Optional, TYPE_CHECKING, Dict, Iterable, List
 from functools import lru_cache
-from typing import Dict, Iterable, List, Optional
 
+# Expose the spaCy Language type only for static type checkers. At runtime
+# spaCy may be missing; we import it in a try/except below.
+if TYPE_CHECKING:
+    from spacy.language import Language
 import logging
 
 logger = logging.getLogger(__name__)
@@ -26,7 +29,7 @@ def _best_text_sample(article: dict) -> str:
 
 
 @lru_cache(maxsize=2)
-def _load_pipeline(model_name: str) -> Optional["spacy.Language"]:
+def _load_pipeline(model_name: str) -> Optional["Language"]:
     """Load a spaCy model if available."""
     if spacy is None:
         logger.info("spaCy is not installed; entity extraction is disabled")

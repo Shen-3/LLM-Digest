@@ -9,7 +9,8 @@ from typing import Dict, List
 import numpy as np
 from fastapi import FastAPI, HTTPException, Query
 
-from . import embeddings, metrics, search, utils
+from . import embeddings, metrics, utils
+import .search as search_module
 
 CONFIG_PATH = os.environ.get("NEWS_TOPICS_CONFIG", "configs/config.yaml")
 CONFIG = utils.load_config(CONFIG_PATH)

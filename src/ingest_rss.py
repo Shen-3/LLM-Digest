@@ -5,7 +5,7 @@ import argparse
 import hashlib
 from datetime import datetime
 from pathlib import Path
-from typing import Iterable, List
+from typing import Iterable, List, Sequence
 
 import feedparser
 
@@ -28,19 +28,60 @@ def _canonical_datetime(entry: feedparser.FeedParserDict) -> str:
         return utils.utcnow_iso()
 
 
+def _fp_value_to_str(raw: object) -> str | None:
+    """Safely coerce common feedparser values to a plain str or None.
+
+    feedparser sometimes returns strings, None, lists of FeedParserDict or
+    FeedParserDict-like objects. This helper normalizes those common cases to
+    a simple str or None so downstream callers (like preprocess.normalize_text)
+    can accept a well-typed input.
+    """
+    if raw is None:
+        return None
+    if isinstance(raw, str):
+        return raw
+    # common case: list of items
+    if isinstance(raw, list):
+        if not raw:
+            return None
+        first = raw[0]
+        if isinstance(first, str):
+            return first
+        # try FeedParserDict-like access
+        try:
+            return first.get("value") or first.get("title") or first.get("href")  # type: ignore[attr-defined]
+        except Exception:
+            return str(first)
+    # FeedParserDict-like single object
+    try:
+        return raw.get("value") or raw.get("title")  # type: ignore[arg-type]
+    except Exception:
+        return str(raw)
+
+
 def fetch_rss_items(feeds: Iterable[str], limit_per_feed: int = 20) -> List[dict]:
     """Download RSS entries and normalize them to the project schema."""
     articles: List[dict] = []
     for feed_url in feeds:
         parsed = feedparser.parse(feed_url)
+        feed_obj = parsed.get("feed")
         for entry in parsed.entries[:limit_per_feed]:
-            url = entry.get("link") or ""
-            title = preprocess.normalize_text(entry.get("title"))
-            description = preprocess.normalize_text(entry.get("summary"))
-            content = preprocess.normalize_text(entry.get("description") or description)
-            source = preprocess.normalize_text(parsed.feed.get("title", "")) or "Unknown"
+            # safely extract feed-level fields (parsed.get("feed") can be various types)
+            feed_link_raw = None
+            feed_title_raw = None
+            feed_language_raw = None
+            if isinstance(feed_obj, dict):
+                feed_link_raw = feed_obj.get("link")
+                feed_title_raw = feed_obj.get("title", "")
+                feed_language_raw = feed_obj.get("language")
+
+            url = _fp_value_to_str(entry.get("link") or feed_link_raw or "") or ""
+            title = preprocess.normalize_text(_fp_value_to_str(entry.get("title")))
+            description = preprocess.normalize_text(_fp_value_to_str(entry.get("summary")))
+            content = preprocess.normalize_text(_fp_value_to_str(entry.get("description")) or description)
+            source = preprocess.normalize_text(_fp_value_to_str(feed_title_raw)) or "Unknown"
             published_at = _canonical_datetime(entry)
-            language = entry.get("language") or parsed.feed.get("language")
+            language = _fp_value_to_str(entry.get("language") or feed_language_raw)
             articles.append(
                 {
                     "id": _hash_entry(url, title),
@@ -61,7 +102,7 @@ def save_items_to_json(items: List[dict], path: str) -> None:
     utils.save_json(items, path)
 
 
-def parse_args(args: Iterable[str] | None = None) -> argparse.Namespace:
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Fetch RSS feeds and build a news dataset")
     parser.add_argument("--feeds", default="data/feeds.txt", help="Path to list of RSS feed URLs")
     parser.add_argument("--output", default="data/sample_news.json", help="Where to store the aggregated JSON")
