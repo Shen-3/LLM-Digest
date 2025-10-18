@@ -8,7 +8,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-try:  # optional dependency
+try:  # optional dependency ---
     import spacy
 except ImportError:  # pragma: no cover - spaCy not installed
     spacy = None  # type: ignore
