@@ -14,3 +14,5 @@ torch>=2.1.0
 transformers>=4.36.0
 tokenizers>=0.14.0
 uvicorn>=0.23.0
+pytest>=7.4.0
+
